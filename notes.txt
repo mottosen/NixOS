@@ -1,0 +1,8 @@
+update flake lock file:
+nix flake update
+
+update system flake:
+sudo nixos-rebuild switch --flake .#<system_profile>
+
+update user flake:
+home-manager switch --flake .#<user_profile>
