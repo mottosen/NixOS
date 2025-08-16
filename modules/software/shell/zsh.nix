@@ -11,5 +11,10 @@ in
     };
 
     users.users."${user}".shell = pkgs.zsh;
+
+    environment.systemPackages = with pkgs; [
+      oh-my-posh
+      zoxide
+    ];
   };
 }
