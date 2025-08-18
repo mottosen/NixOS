@@ -24,14 +24,14 @@
         };
       };
 
-      old = lib.nixosSystem {
+      viking = lib.nixosSystem {
         inherit system;
         modules = [
           ./modules/hardware
           ./modules/software
         ];
         specialArgs = {
-          profile = "pc-old";
+          profile = "viking";
           inherit system;
         };
       };

@@ -3,7 +3,7 @@
 {
   imports = [
     ./vm
-    ./pc-old
+    ./viking
   ];
 
   config.systemSettings.profile = profile;

@@ -5,7 +5,7 @@
     ../../.definitions
   ];
 
-  config = lib.mkIf (config.systemSettings.profile == "pc-old") {
+  config = lib.mkIf (config.systemSettings.profile == "viking") {
     systemSettings = {
       hostname = "nixos";
       timezone = "Europe/Copenhagen";
