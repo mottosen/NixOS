@@ -9,7 +9,7 @@
     systemSettings = {
       hostname = "nixos";
       timezone = "Europe/Copenhagen";
-      bootloader = "bios";
+      bootloader = "bios-libreboot";
       systemDevice = "nodev";
     };
 

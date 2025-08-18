@@ -74,5 +74,6 @@ in
   users.users."${user}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+    initialPassword = "1234";
   };
 }
