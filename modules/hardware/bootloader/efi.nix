@@ -9,6 +9,10 @@
         enable = true;
         configurationLimit = 10;
       };
+      grub = {
+        enable = true;
+        device = "nodev";
+      };
     };
 
     fileSystems."/boot" = {

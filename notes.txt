@@ -14,16 +14,16 @@ sudo -i
 # Configure Partitions
 cfdisk
     device      size    type
-    /dev/sda1   ~1gb    efi system
+    /dev/sda1   ~1gb    efi system/bios_boot
     /dev/sda2   rest    linux filesystem
 
 # Label Partitions
-mkfs.fat -F32 -n ESP /dev/sda1
+mkfs.fat -F32 -n ESP /dev/sda1 (-- ONLY EFI --)
 mkfs.ext4 -L nixos /dev/sda2
 
 # Mount Partitions
 mount /dev/disk/by-label/nixos /mnt
-mkdir /mnt/boot && mount /dev/disk/by-label/ESP /mnt/boot
+mkdir /mnt/boot && mount /dev/disk/by-label/ESP /mnt/boot (-- ONLY EFI --)
 
 # Install NixOS from Flake
 nixos-install --flake "github:mottosen/NixOS#system
