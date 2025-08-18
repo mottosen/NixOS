@@ -70,9 +70,6 @@ in
     videoDrivers = [ "amdgpu" ];
   };
 
-  # Networking
-  networking.networkmanager.enable = true;
-
   # User Setup
   users.users."${user}" = {
     isNormalUser = true;

@@ -37,6 +37,16 @@
         type = lib.types.path;
         default = "/boot";
       };
+
+      bootloader = lib.mkOption {
+        type = lib.types.nonEmptyStr;
+        default = "efi";
+      };
+
+      systemDevice = lib.mkOption {
+        type = lib.types.nonEmptyStr;
+        default = "not-set";
+      };
     };
   };
 }

@@ -5,17 +5,19 @@
     ../../.definitions
   ];
 
-  config = lib.mkIf (config.systemSettings.profile == "pc") {
+  config = lib.mkIf (config.systemSettings.profile == "pc-old") {
     systemSettings = {
-      hostname = "nixos-pc";
+      hostname = "nixos";
       timezone = "Europe/Copenhagen";
+      bootloader = "bios";
+      systemDevice = "/dev/sda";
     };
 
     userSettings = {
       username = "marius";
-      name = "Marius";
-      email = "business@mottosen.xyz";
-      windowManager = "hypr";
+      name = "marius";
+      email = "marius@test.com";
+      windowManager = "qtile";
       browser = "zen";
       terminal = "wezterm";
       multiplexor = "zellij";

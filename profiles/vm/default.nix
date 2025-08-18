@@ -9,6 +9,8 @@
     systemSettings = {
       hostname = "nixos-vm";
       timezone = "Europe/Copenhagen";
+      bootloader = "efi";
+      systemDevice = "/dev/sda";
     };
 
     userSettings = {

@@ -3,6 +3,7 @@
 {
   imports = [
     ./vm
+    ./pc-old
   ];
 
   config.systemSettings.profile = profile;

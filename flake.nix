@@ -7,21 +7,31 @@
 
   outputs = { self, nixpkgs, ... }: 
     let
-      profile = "pc";
       system = "x86_64-linux";
-
       lib = nixpkgs.lib;
     in
     {
     nixosConfigurations = {
-      system = lib.nixosSystem {
+      vm = lib.nixosSystem {
         inherit system;
         modules = [
           ./modules/hardware
           ./modules/software
         ];
         specialArgs = {
-          inherit profile;
+          profile = "vm";
+          inherit system;
+        };
+      };
+
+      old = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./modules/hardware
+          ./modules/software
+        ];
+        specialArgs = {
+          profile = "pc-old";
           inherit system;
         };
       };
