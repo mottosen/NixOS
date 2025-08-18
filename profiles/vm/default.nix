@@ -15,7 +15,7 @@
       username = "test"; # host mounted dir depends on this
       name = "test user";
       email = "test@vm.com";
-      windowManager = "hypr";
+      windowManager = "qtile";
       browser = "zen";
       terminal = "wezterm";
       multiplexor = "zellij";

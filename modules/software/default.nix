@@ -37,6 +37,7 @@ in
   environment.systemPackages = with pkgs; [
     vim
     wget
+    curl
     git
     stow
     fastfetch
