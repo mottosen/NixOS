@@ -35,6 +35,18 @@
           inherit system;
         };
       };
+
+      framework = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./modules/hardware
+          ./modules/software
+        ];
+        specialArgs = {
+          profile = "framework";
+          inherit system;
+        };
+      };
     };
   };
 }

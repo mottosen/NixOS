@@ -4,6 +4,7 @@
   imports = [
     ./vm
     ./viking
+    ./framework
   ];
 
   config.systemSettings.profile = profile;

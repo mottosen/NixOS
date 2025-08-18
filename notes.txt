@@ -34,3 +34,42 @@ poweroff
 # Remove ISO media
 
 # Boot up System
+
+
+
+
+
+
+
+# Turn Wi-Fi on and see your interface
+nmcli radio wifi on
+nmcli dev status          # note your wifi device (e.g. wlan0)
+
+
+# Scan and list networks
+nmcli dev wifi rescan
+nmcli dev wifi list
+
+
+# Connect (WPA/WPA2-Personal)
+# simplest (auto-picks your wifi device)
+nmcli dev wifi connect "YOUR_SSID" password "YOUR_PASSWORD"
+
+# if you have multiple wifi devices
+nmcli dev wifi connect "YOUR_SSID" password "YOUR_PASSWORD" ifname wlan0
+
+# hidden SSID
+nmcli dev wifi connect "YOUR_HIDDEN_SSID" password "YOUR_PASSWORD" hidden yes
+
+
+# Check you’re online
+nmcli -p con show --active
+nmcli dev show wlan0 | grep -E 'IP4.ADDRESS|IP4.GATEWAY|DNS'
+ping -c3 1.1.1.1 && ping -c3 nixos.org
+
+
+# Handy extras
+nmcli con mod "<SSID>" connection.autoconnect yes   # auto-connect at boot
+nmcli con delete "<SSID>"                           # forget a network
+nmcli dev wifi connect <BSSID> password "..."       # connect to a specific AP
+
