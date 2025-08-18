@@ -4,5 +4,33 @@ nix flake update
 update system flake:
 sudo nixos-rebuild switch --flake .#<system_profile>
 
-update user flake:
-home-manager switch --flake .#<user_profile>
+
+
+
+
+# Be sudo
+sudo -i
+
+# Configure Partitions
+cfdisk
+    device      size    type
+    /dev/sda1   ~1gb    efi system
+    /dev/sda2   rest    linux filesystem
+
+# Label Partitions
+mkfs.fat -F32 -n EFI /dev/sda1
+mkfs.ext4 -L nixos /dev/sda2
+
+# Mount Partitions
+mount /dev/disk/by-label/nixos /mnt
+mkdir /mnt/boot && mount /dev/disk/by-label/EFI /mnt/boot
+
+# Install NixOS from Flake
+nixos-install --flake "github:mottosen/NixOS#system
+
+# Shutdown System
+poweroff
+
+# Remove ISO media
+
+# Boot up System
