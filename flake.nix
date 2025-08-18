@@ -7,7 +7,7 @@
 
   outputs = { self, nixpkgs, ... }: 
     let
-      profile = "vm";
+      profile = "pc";
       system = "x86_64-linux";
 
       lib = nixpkgs.lib;
