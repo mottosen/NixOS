@@ -6,6 +6,7 @@
       grub = {
         enable = true;
         device = config.systemSettings.systemDevice;
+        fsIdentifier = "label";
       };
     };
   };

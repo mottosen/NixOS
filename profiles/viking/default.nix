@@ -10,7 +10,7 @@
       hostname = "nixos";
       timezone = "Europe/Copenhagen";
       bootloader = "bios";
-      systemDevice = "/dev/sda";
+      systemDevice = "nodev";
     };
 
     userSettings = {
