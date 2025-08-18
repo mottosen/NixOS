@@ -1,5 +1,8 @@
 { config, lib, ... }:
 
+let
+  user = config.userSettings.username;
+in
 {
   config = lib.mkIf (config.systemSettings.profile == "vm") {
     systemd.tmpfiles.rules = [
@@ -38,5 +41,17 @@
     };
 
     virtualisation.virtualbox.guest.enable = true;
+
+    environment.sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = 1;
+      WLR_RENDERER_ALLOW_SOFTWARE = 1;
+    };
+
+    hardware.graphics.enable = true;
+    services.xserver.videoDrivers = [ "vmware" ];
+
+    users.users."${user}" = {
+      extraGroups = [ "vboxsf" ];
+    };
   };
 }

@@ -9,8 +9,8 @@
 
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    kernelModules = [ ];
-    extraModulePackages = [ ];
+    kernelModules = [];
+    extraModulePackages = [];
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -23,7 +23,7 @@
 
     initrd = {
       availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
   };
 

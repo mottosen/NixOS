@@ -50,12 +50,6 @@ in
       EDITOR   = config.userSettings.editor;
       VISUAL   = config.userSettings.editor;
       TERMINAL = config.userSettings.terminal;
-
-      # VM ?
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      WLR_NO_HARDWARE_CURSORS = 1;
-      WLR_RENDERER_ALLOW_SOFTWARE = 1;   # let it fall back to llvmpipe if needed
     };
   };
 
@@ -68,15 +62,16 @@ in
     ];
   };
 
-  # TODOTODO: consider
+  # X11 stuff
   services.xserver = {
     enable = true;
     windowManager.qtile.enable = true;
+    services.xserver.videoDrivers = [ "amdgpu" ];
   };
 
   # User Setup
   users.users."${user}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "vboxsf" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 }
