@@ -12,6 +12,7 @@ in
     ./shell
     ./terminal
     ./windowManager
+    ./browser
   ];
 
   # General
@@ -41,6 +42,7 @@ in
     git
     stow
     fastfetch
+    fzf
   ];
 
   # Baseline terminal
