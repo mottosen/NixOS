@@ -47,7 +47,6 @@ in
       WLR_RENDERER_ALLOW_SOFTWARE = 1;
     };
 
-    hardware.graphics.enable = true;
     services.xserver.videoDrivers = [ "vmware" ];
 
     users.users."${user}" = {

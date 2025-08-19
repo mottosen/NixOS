@@ -69,7 +69,7 @@ in
   services.xserver = {
     enable = true;
     windowManager.qtile.enable = true;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "amdgpu" "modesetting" ];
   };
 
   # User Setup
