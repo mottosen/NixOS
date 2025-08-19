@@ -10,12 +10,12 @@
 
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    kernelModules = [];
+    kernelModules = [ "i915" "amdgpu" ];
     extraModulePackages = [];
 
     initrd = {
       availableKernelModules = [ "vmd" "nvme" "xhci_pci" "usb_storage" "rtsx_pci_sdmmc" "sdhci_pci" "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
-      kernelModules = [];
+      kernelModules = [ "i915" "amdgpu" ];
     };
   };
 

@@ -31,7 +31,14 @@ in
   i18n.defaultLocale = config.systemSettings.locale;
   networking = {
     hostName = config.systemSettings.hostname;
-    networkmanager.enable = true;
+    wireless = {
+      enable = false;
+      iwd.enable = true;
+    };
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
   };
 
   # System wide packages
