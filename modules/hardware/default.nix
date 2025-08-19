@@ -14,13 +14,14 @@
     extraModulePackages = [];
 
     initrd = {
-      availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
+      availableKernelModules = [ "vmd" "nvme" "xhci_pci" "usb_storage" "rtsx_pci_sdmmc" "sdhci_pci" "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
       kernelModules = [];
     };
   };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
   };
 
   swapDevices = [

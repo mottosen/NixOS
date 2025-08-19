@@ -13,6 +13,7 @@
 
     fileSystems."/boot" = {
       device = "/dev/disk/by-label/ESP";
+      fsType = "vfat";
     };
   };
 }
