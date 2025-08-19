@@ -10,7 +10,7 @@
       hostname = "fw";
       timezone = "Europe/Copenhagen";
       bootloader = "efi";
-      systemDevice = "/dev/nvme1n1";
+      systemDevice = "/dev/nvme0n1";
     };
 
     userSettings = {
