@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   config = lib.mkIf (config.userSettings.windowManager == "hypr") {
@@ -7,7 +7,11 @@
 
     environment.systemPackages = with pkgs; [
       wofi
-      libsForQt5.dolphin
+      pcmanfm
+      hyprpaper
+      waypaper
+      inputs.matugen.packages.${system}.default
+      pywalfox-native
     ];
 
     # Input/session management for Wayland compositors

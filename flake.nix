@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    matugen.url = "github:/InioX/Matugen";
   };
 
   outputs = { self, nixpkgs, ... } @ inputs:
