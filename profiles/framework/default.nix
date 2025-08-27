@@ -17,7 +17,7 @@
       username = "marius";
       name = "marius";
       email = "marius@test.com";
-      windowManager = "qtile";
+      windowManager = "hypr";
       browser = "zen";
       terminal = "wezterm";
       multiplexor = "zellij";

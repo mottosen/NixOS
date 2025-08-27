@@ -42,6 +42,7 @@ in
   };
 
   # System wide packages
+  programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -50,6 +51,11 @@ in
     stow
     fastfetch
     fzf
+    pik
+    btop
+    killall
+    ranger
+    feh
   ];
 
   # Baseline terminal
