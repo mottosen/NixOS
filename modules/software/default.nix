@@ -43,7 +43,18 @@ in
 
   # System wide packages
   programs.firefox.enable = true;
-  services.blueman.enable = true;
+  services = {
+    blueman.enable = true;
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     wget
