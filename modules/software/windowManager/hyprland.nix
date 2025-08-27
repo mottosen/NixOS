@@ -11,6 +11,7 @@
 
       wofi
       pcmanfm
+      mako
 
       waypaper
       inputs.matugen.packages.${system}.default
@@ -28,10 +29,6 @@
         pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
       ];
-    };
-
-    environment.sessionVariables = {
-      HYPRSHOT_DIR = "$HOME/Pictures";
     };
   };
 }

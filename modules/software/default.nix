@@ -105,5 +105,6 @@ in
     ranger
     feh
     keymapp
+    libnotify
   ];
 }
