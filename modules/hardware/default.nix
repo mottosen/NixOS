@@ -4,23 +4,17 @@
   imports = [
     ../../profiles
     ./bootloader
-    ./virtualization
+    ./system
     ./kernel
   ];
 
-  boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-intel" ]; # dell
-    #kernelModules = [ "amdgpu" ];
-    extraModulePackages = [];
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+  networking.useDHCP = lib.mkDefault true;
+  nixpkgs.hostPlatform = lib.mkDefault config.systemSettings.architecture;
 
-    initrd = {
-      availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ]; # vm
-      availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ]; # dell
-
-      kernelModules = [];
-      #kernelModules = [ "i915" "amdgpu" ];
-    };
+  hardware = {
+    graphics.enable = lib.mkDefault true;
+    enableRedistributableFirmware = lib.mkDefault true;
   };
 
   fileSystems."/" = {
@@ -31,14 +25,4 @@
   swapDevices = [
     { device = "/swapfile"; size = 2048; }
   ];
-
-  networking.useDHCP = lib.mkDefault true;
-
-  nixpkgs.hostPlatform = config.systemSettings.architecture;
-
-  hardware = {
-    graphics.enable = true;
-    enableRedistributableFirmware = true;
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  };
 }

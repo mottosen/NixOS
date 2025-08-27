@@ -4,7 +4,7 @@
   imports = [
     ./vm
     ./viking
-    ./framework
+    ./dell
   ];
 
   config.systemSettings.profile = profile;

@@ -5,6 +5,25 @@ let
 in
 {
   config = lib.mkIf (config.systemSettings.profile == "vm") {
+    boot = {
+      initrd = {
+        availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
+      };
+    };
+
+    virtualisation.virtualbox.guest.enable = true;
+
+    environment.sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = 1;
+      WLR_RENDERER_ALLOW_SOFTWARE = 1;
+    };
+
+    services.xserver.videoDrivers = [ "vmware" ];
+
+    users.users."${user}" = {
+      extraGroups = [ "vboxsf" ];
+    };
+
     systemd.tmpfiles.rules = [
       "d /home/test/.dotfiles 0755 $USER users -"
       "d /home/test/nixos 0755 $USER users -"
@@ -38,19 +57,6 @@ in
         "x-systemd.automount"
         "nofail"
       ];
-    };
-
-    virtualisation.virtualbox.guest.enable = true;
-
-    environment.sessionVariables = {
-      WLR_NO_HARDWARE_CURSORS = 1;
-      WLR_RENDERER_ALLOW_SOFTWARE = 1;
-    };
-
-    services.xserver.videoDrivers = [ "vmware" ];
-
-    users.users."${user}" = {
-      extraGroups = [ "vboxsf" ];
     };
   };
 }

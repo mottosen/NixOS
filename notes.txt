@@ -18,12 +18,12 @@ cfdisk
     /dev/sda2   rest    linux filesystem
 
 # Label Partitions
-mkfs.fat -F32 -n ESP /dev/sda1 (-- ONLY EFI --)
+mkfs.fat -F32 -n EFI /dev/sda1 (-- ONLY EFI --)
 mkfs.ext4 -L nixos /dev/sda2
 
 # Mount Partitions
 mount /dev/disk/by-label/nixos /mnt
-mkdir /mnt/boot && mount /dev/disk/by-label/ESP /mnt/boot (-- ONLY EFI --)
+mkdir /mnt/boot && mount /dev/disk/by-label/EFI /mnt/boot (-- ONLY EFI --)
 
 # Install NixOS from Flake
 nixos-install --flake "github:mottosen/NixOS#system

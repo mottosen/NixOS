@@ -5,9 +5,9 @@
     ../../.definitions
   ];
 
-  config = lib.mkIf (config.systemSettings.profile == "framework") {
+  config = lib.mkIf (config.systemSettings.profile == "dell") {
     systemSettings = {
-      hostname = "fw";
+      hostname = "dell";
       timezone = "Europe/Copenhagen";
       bootloader = "efi";
       systemDevice = "/dev/nvme0n1";
