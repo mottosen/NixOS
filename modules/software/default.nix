@@ -13,6 +13,7 @@ in
     ./terminal
     ./windowManager
     ./browser
+    ./zsa
   ];
 
   # General
@@ -40,35 +41,6 @@ in
       wifi.backend = "iwd";
     };
   };
-
-  # System wide packages
-  programs.firefox.enable = true;
-  services = {
-    blueman.enable = true;
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-    };
-  };
-
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    curl
-    git
-    stow
-    fastfetch
-    fzf
-    pik
-    btop
-    killall
-    ranger
-    feh
-  ];
 
   # Baseline terminal
   users.defaultUserShell = pkgs.bash;
@@ -100,7 +72,38 @@ in
   # User Setup
   users.users."${user}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "plugdev" ];
     initialPassword = "1234";
   };
+
+  # System wide packages
+  nixpkgs.config.allowUnfree = true;
+  programs.firefox.enable = true;
+  services = {
+    blueman.enable = true;
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    curl
+    git
+    stow
+    fastfetch
+    fzf
+    pik
+    btop
+    killall
+    ranger
+    feh
+    keymapp
+  ];
 }
