@@ -10,12 +10,16 @@
 
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    kernelModules = [ "i915" "amdgpu" ];
+    kernelModules = [ "kvm-intel" ]; # dell
+    #kernelModules = [ "amdgpu" ];
     extraModulePackages = [];
 
     initrd = {
-      availableKernelModules = [ "vmd" "nvme" "xhci_pci" "usb_storage" "rtsx_pci_sdmmc" "sdhci_pci" "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
-      kernelModules = [ "i915" "amdgpu" ];
+      availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ]; # vm
+      availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ]; # dell
+
+      kernelModules = [];
+      #kernelModules = [ "i915" "amdgpu" ];
     };
   };
 
@@ -35,5 +39,6 @@
   hardware = {
     graphics.enable = true;
     enableRedistributableFirmware = true;
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 }
