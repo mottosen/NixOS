@@ -31,5 +31,9 @@
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = config.systemSettings.architecture;
-  hardware.graphics.enable = true;
+
+  hardware = {
+    graphics.enable = true;
+    enableRedistributableFirmware = true;
+  };
 }
