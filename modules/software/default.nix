@@ -43,6 +43,7 @@ in
 
   # System wide packages
   programs.firefox.enable = true;
+  services.blueman.enable = true;
   environment.systemPackages = with pkgs; [
     vim
     wget
