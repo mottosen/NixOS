@@ -6,9 +6,12 @@
     programs.waybar.enable = true;
 
     environment.systemPackages = with pkgs; [
+      hyprpaper
+      hyprshot
+
       wofi
       pcmanfm
-      hyprpaper
+
       waypaper
       inputs.matugen.packages.${system}.default
       pywalfox-native
@@ -25,6 +28,10 @@
         pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
       ];
+    };
+
+    environment.sessionVariables = {
+      HYPRSHOT_DIR = "$HOME/Pictures";
     };
   };
 }
