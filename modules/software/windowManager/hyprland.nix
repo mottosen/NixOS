@@ -4,6 +4,7 @@
   config = lib.mkIf (config.userSettings.windowManager == "hypr") {
     programs.hyprland.enable = true;
     programs.hyprlock.enable = true;
+    services.hypridle.enable = true;
     programs.waybar.enable = true;
 
     environment.systemPackages = with pkgs; [
