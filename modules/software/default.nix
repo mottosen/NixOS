@@ -81,6 +81,7 @@ in
   programs.firefox.enable = true;
   services = {
     blueman.enable = true;
+    pcscd.enable = true;
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -107,5 +108,7 @@ in
     keymapp
     libnotify
     brightnessctl
+    mako
+    yubioath-flutter
   ];
 }

@@ -13,7 +13,6 @@
 
       wofi
       pcmanfm
-      mako
 
       waypaper
       inputs.matugen.packages.${system}.default
