@@ -106,5 +106,6 @@ in
     feh
     keymapp
     libnotify
+    brightnessctl
   ];
 }
