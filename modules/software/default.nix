@@ -57,8 +57,10 @@ in
   fonts = {
     fontconfig.enable = true;
     packages = with pkgs; [
+      nerd-fonts.symbols-only
       nerd-fonts.fira-code
-      nerd-fonts.droid-sans-mono
+      nerd-fonts.hurmit
+      nerd-fonts.intone-mono
     ];
   };
 
