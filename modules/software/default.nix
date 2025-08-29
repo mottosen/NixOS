@@ -113,5 +113,6 @@ in
     brightnessctl
     mako
     yubioath-flutter
+    diff-so-fancy
   ];
 }
