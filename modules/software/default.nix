@@ -19,6 +19,7 @@ in
   # General
   system.stateVersion = "25.05"; # Do not change
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  services.logind.lidSwitchDocked = "suspend";
 
   # Garbage Collection
   nix.gc = {
