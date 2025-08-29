@@ -18,7 +18,7 @@
       name = "marius";
       email = "marius@test.com";
       windowManager = "hypr";
-      browser = "zen";
+      browser = "librewolf";
       terminal = "wezterm";
       multiplexor = "zellij";
       shell = "zsh";
