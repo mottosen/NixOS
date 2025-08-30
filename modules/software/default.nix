@@ -114,5 +114,6 @@ in
     mako
     yubioath-flutter
     diff-so-fancy
+    lazygit
   ];
 }
