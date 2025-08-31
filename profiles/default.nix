@@ -3,6 +3,7 @@
 {
   imports = [
     ./vm
+    ./framework
     ./viking
     ./dell
   ];

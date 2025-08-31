@@ -40,6 +40,19 @@
         };
       };
 
+      framework = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./modules/hardware
+          ./modules/software
+        ];
+        specialArgs = {
+          profile = "framework";
+          inherit system;
+          inherit inputs;
+        };
+      };
+
       dell = lib.nixosSystem {
         inherit system;
         modules = [
