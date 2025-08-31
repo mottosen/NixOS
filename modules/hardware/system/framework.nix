@@ -15,5 +15,11 @@ in
     hardware = {
       cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
+
+    services.udev.extraRules = ''
+      # Ethernet expansion card support
+      ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
+    '';
+
   };
 }
