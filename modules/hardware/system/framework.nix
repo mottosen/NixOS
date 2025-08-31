@@ -1,9 +1,13 @@
-{ config, lib, ... }:
+{ config, lib, modulesPath, ... }:
 
 let
   user = config.userSettings.username;
 in
 {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
   config = lib.mkIf (config.systemSettings.profile == "framework") {
     boot = {
       kernelModules = [ "kvm-amd" ];

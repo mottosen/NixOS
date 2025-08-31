@@ -115,5 +115,6 @@ in
     yubioath-flutter
     diff-so-fancy
     lazygit
+    usbutils
   ];
 }
