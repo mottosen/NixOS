@@ -21,6 +21,13 @@ in
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   services.logind.lidSwitchDocked = "suspend";
 
+  # VMs
+  programs.virt-manager.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
+  };
+
   # Garbage Collection
   nix.gc = {
     automatic = true;
@@ -75,7 +82,7 @@ in
   # User Setup
   users.users."${user}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "plugdev" ];
+    extraGroups = [ "wheel" "networkmanager" "plugdev" "libvirtd" ];
     initialPassword = "1234";
   };
 
