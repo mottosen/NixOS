@@ -28,6 +28,7 @@
         vim = "nvim";
         py = "python3";
         gs = "git status --short";
+        lg = "lazygit";
       };
     };
   };
