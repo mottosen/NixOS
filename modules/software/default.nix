@@ -40,13 +40,10 @@ in
   i18n.defaultLocale = config.systemSettings.locale;
   networking = {
     hostName = config.systemSettings.hostname;
-    wireless = {
-      enable = false;
-      iwd.enable = true;
-    };
+    wireless.enable = false;
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
+      wifi.backend = "wpa_supplicant";
     };
   };
 
@@ -123,6 +120,8 @@ in
     diff-so-fancy
     lazygit
     usbutils
+
+    geteduroam
 
     qemu
     quickemu
