@@ -80,12 +80,14 @@ in
   users.users."${user}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "plugdev" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "plugdev" "libvirtd" "docker" ];
     initialPassword = "1234";
   };
 
   # System wide packages
   nixpkgs.config.allowUnfree = true;
   programs.firefox.enable = true;
+  virtualisation.docker.enable = true;
   services = {
     blueman.enable = true;
     pcscd.enable = true;
