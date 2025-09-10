@@ -79,7 +79,6 @@ in
   # User Setup
   users.users."${user}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "plugdev" "libvirtd" ];
     extraGroups = [ "wheel" "networkmanager" "plugdev" "libvirtd" "docker" ];
     initialPassword = "1234";
   };
