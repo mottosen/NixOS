@@ -123,6 +123,9 @@ in
     lazygit
     usbutils
 
+    uair
+
+    zotero
     geteduroam
 
     qemu
