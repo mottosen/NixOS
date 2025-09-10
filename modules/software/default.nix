@@ -101,35 +101,37 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    # cli
+    busybox
     vim
-    wget
     curl
-    git
     stow
     fastfetch
     fzf
-    pik
     btop
-    killall
     ranger
-    feh
-    keymapp
-    libnotify
-    brightnessctl
-    mako
+    uair # pomodoro timer cli
+
+    # gui
+    feh # image viewer
+    keymapp # zsa keyboard tool
     yubioath-flutter
-    diff-so-fancy
-    lazygit
-    usbutils
-
-    uair
-
     zotero
-
     geteduroam
 
+    # utility
+    libnotify # notification utility
+    brightnessctl # screeb brightness
+    pik # kill processes
+    mako # notification service
     bibata-cursors
 
+    # git
+    git
+    diff-so-fancy # pretty print file diff
+    lazygit
+
+    # vm stuff
     qemu
     quickemu
     (
