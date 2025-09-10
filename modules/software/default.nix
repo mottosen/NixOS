@@ -126,7 +126,10 @@ in
     uair
 
     zotero
+
     geteduroam
+
+    bibata-cursors
 
     qemu
     quickemu

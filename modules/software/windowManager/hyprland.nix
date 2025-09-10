@@ -10,6 +10,11 @@
     environment.systemPackages = with pkgs; [
       hyprpaper
       hyprshot
+      hyprcursor
+
+      libinput
+      #wayland
+      #wayland-utils
 
       wofi
       pcmanfm
