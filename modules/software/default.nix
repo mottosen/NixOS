@@ -103,14 +103,18 @@ in
   environment.systemPackages = with pkgs; [
     # cli
     busybox
-    vim
     curl
     stow
     fastfetch
     fzf
-    btop
-    ranger
     uair # pomodoro timer cli
+    gnumake
+
+    # tui
+    ranger
+    btop
+    vim
+    lazydocker
 
     # gui
     feh # image viewer

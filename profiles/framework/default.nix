@@ -29,6 +29,7 @@
         py = "python3";
         gs = "git status --short";
         lg = "lazygit";
+        ldc = "lazydocker";
         vh = "vim .";
       };
     };
