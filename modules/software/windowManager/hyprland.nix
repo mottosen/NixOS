@@ -12,7 +12,6 @@
       hyprshot
       hyprcursor
 
-      libinput
       #wayland
       #wayland-utils
 
@@ -25,7 +24,7 @@
     ];
 
     # Input/session management for Wayland compositors
-    services.seatd.enable = true;                 # Hyprland can use seatd or logind
+    #services.seatd.enable = true;                 # Hyprland can use seatd or logind
     security.polkit.enable = true;
 
     # Portals (screen sharing, open dialog etc.)

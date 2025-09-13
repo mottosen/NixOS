@@ -19,7 +19,6 @@ in
   # General
   system.stateVersion = "25.05"; # Do not change
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  services.logind.lidSwitchDocked = "suspend";
 
   # VMs
   programs.virt-manager.enable = true;
@@ -72,6 +71,7 @@ in
   # X11 stuff
   services.xserver = {
     enable = true;
+    displayManager.gdm.enable = true;
     windowManager.qtile.enable = true;
     videoDrivers = [ "amdgpu" "modesetting" ];
   };
@@ -79,7 +79,7 @@ in
   # User Setup
   users.users."${user}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "plugdev" "libvirtd" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "input" "video" "seat" "plugdev" "libvirtd" "docker" ];
     initialPassword = "1234";
   };
 
@@ -90,6 +90,9 @@ in
   services = {
     blueman.enable = true;
     pcscd.enable = true;
+    logind = {
+      lidSwitchDocked = "suspend";
+    };
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -125,6 +128,7 @@ in
 
     # utility
     libnotify # notification utility
+    libinput # input devices
     brightnessctl # screeb brightness
     pik # kill processes
     mako # notification service
