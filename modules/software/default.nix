@@ -86,7 +86,10 @@ in
   # System wide packages
   nixpkgs.config.allowUnfree = true;
   programs.firefox.enable = true;
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+        enable = true;
+        #extraOptions = "--bip=192.168.100.1/24 --fixed-cidr=192.168.100.0/24 --dns=8.8.8.8 --dns=8.8.4.4";
+  };
   services = {
     blueman.enable = true;
     pcscd.enable = true;
