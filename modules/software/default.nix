@@ -109,7 +109,9 @@ in
   environment.systemPackages = with pkgs; [
     # cli
     busybox
+    devbox
     curl
+    wget # full install needed for TLS support
     stow
     fastfetch
     fzf
@@ -128,6 +130,7 @@ in
     yubioath-flutter
     zotero
     geteduroam
+    vscode
 
     # utility
     libnotify # notification utility
