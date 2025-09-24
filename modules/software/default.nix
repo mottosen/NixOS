@@ -6,14 +6,11 @@ in
 {
   imports = [
      ../../profiles
-    ./editor
-    ./languages
     ./multiplexor
     ./shell
     ./terminal
     ./windowManager
     ./browser
-    ./zsa
   ];
 
   # General
@@ -76,6 +73,21 @@ in
     videoDrivers = [ "amdgpu" "modesetting" ];
   };
 
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "zsa_voyager";
+      destination = "/etc/udev/rules.d/50-zsa.rules";
+      text = ''
+# Rules for Oryx web flashing and live training
+KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+
+# Keymapp Flashing rules for the Voyager
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
+      '';
+    })
+  ];
+
   # User Setup
   users.users."${user}" = {
     isNormalUser = true;
@@ -85,7 +97,6 @@ in
 
   # System wide packages
   nixpkgs.config.allowUnfree = true;
-  programs.firefox.enable = true;
   virtualisation.docker = {
         enable = true;
         #extraOptions = "--bip=192.168.100.1/24 --fixed-cidr=192.168.100.0/24 --dns=8.8.8.8 --dns=8.8.4.4";
@@ -103,6 +114,13 @@ in
         enable = true;
         support32Bit = true;
       };
+    };
+  };
+  programs = {
+    firefox.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
     };
   };
 
@@ -144,6 +162,12 @@ in
     git
     diff-so-fancy # pretty print file diff
     lazygit
+
+    # languages
+    gcc
+    cmake
+    lua
+    python3
 
     # vm stuff
     qemu
