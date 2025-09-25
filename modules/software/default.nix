@@ -41,6 +41,9 @@ in
       enable = true;
       wifi.backend = "wpa_supplicant";
     };
+    extraHosts = ''
+127.0.0.2 local.appstract.cloud
+    '';
   };
 
   # Baseline terminal
