@@ -6,6 +6,7 @@ in
 {
   imports = [
      ../../profiles
+    ./editor
     ./multiplexor
     ./shell
     ./terminal
@@ -42,7 +43,7 @@ in
       wifi.backend = "wpa_supplicant";
     };
     extraHosts = ''
-127.0.0.2 local.appstract.cloud
+127.0.0.1 local.appstract.cloud
     '';
   };
 
@@ -138,6 +139,7 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu
     fzf
     uair # pomodoro timer cli
     gnumake
+    ripgrep
 
     # tui
     ranger
