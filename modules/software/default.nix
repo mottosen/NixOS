@@ -16,7 +16,10 @@ in
 
   # General
   system.stateVersion = "25.05"; # Do not change
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    download-buffer-size = 134217728; # 128 MB (default is 64 MB)
+  };
 
   # VMs
   programs.virt-manager.enable = true;
@@ -72,7 +75,6 @@ in
   # X11 stuff
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
     windowManager.qtile.enable = true;
     videoDrivers = [ "amdgpu" "modesetting" ];
   };
@@ -108,10 +110,11 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu
         #extraOptions = "--bip=192.168.100.1/24 --fixed-cidr=192.168.100.0/24 --dns=8.8.8.8 --dns=8.8.4.4";
   };
   services = {
+    displayManager.gdm.enable = true;
     blueman.enable = true;
     pcscd.enable = true;
     logind = {
-      lidSwitchDocked = "suspend";
+      settings.Login.HandleLidSwitchDocked = "suspend";
     };
     pipewire = {
       enable = true;
