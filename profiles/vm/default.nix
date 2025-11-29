@@ -19,15 +19,9 @@
       email = "test@vm.com";
       windowManager = "qtile";
       browser = "librewolf";
-      terminal = "wezterm";
+      terminal = "kitty";
       multiplexor = "zellij";
       shell = "zsh";
-      shellAliases = {
-        la = "ls -al --color";
-        zz = "zellij attach -c";
-        vim = "nvim";
-        py = "python3";
-      };
     };
   };
 }

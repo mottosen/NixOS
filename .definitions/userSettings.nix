@@ -77,7 +77,15 @@
       shellAliases = lib.mkOption {
         description = "Shell aliases to be set for the user.";
         type = lib.types.anything;
-        default = {};
+        default = {
+          la = "ls -al --color";
+          vim = "nvim";
+          vh = "vim .";
+          py = "python3";
+          gs = "git status --short";
+          lg = "lazygit";
+          ldc = "lazydocker";
+        };
       };
     };
   };
