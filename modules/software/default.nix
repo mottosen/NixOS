@@ -42,9 +42,9 @@ in
       enable = true;
       wifi.backend = "wpa_supplicant";
     };
-    extraHosts = ''
-127.0.0.1 local.appstract.cloud
-    '';
+#     extraHosts = ''
+# 127.0.0.1 local.appstract.cloud
+#     '';
   };
 
   # Baseline terminal
@@ -131,46 +131,46 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu
   environment.systemPackages = with pkgs; [
     # cli
     busybox
-    devbox
     curl
-    wget # full install needed for TLS support
-    stow
+    devbox
     fastfetch
     fzf
-    uair # pomodoro timer cli
     gnumake
     ripgrep
+    stow
+    uair # pomodoro timer cli
+    wget # full install needed for TLS support
 
     # tui
-    ranger
     btop
-    vim
     lazydocker
+    ranger
+    vim
 
     # gui
     feh # image viewer
+    geteduroam
     keymapp # zsa keyboard tool
+    vscode
     yubioath-flutter
     zotero
-    geteduroam
-    vscode
 
     # utility
+    brightnessctl # screeb brightness
+    bibata-cursors
     libnotify # notification utility
     libinput # input devices
-    brightnessctl # screeb brightness
-    pik # kill processes
     mako # notification service
-    bibata-cursors
+    pik # kill processes
 
     # git
-    git
     diff-so-fancy # pretty print file diff
+    git
     lazygit
 
     # languages
-    gcc
     cmake
+    gcc
     lua
     python3
 
