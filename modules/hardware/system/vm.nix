@@ -9,6 +9,7 @@ in
       initrd = {
         availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
       };
+      loader.efi.canTouchEfiVariables = lib.mkForce false;
     };
 
     virtualisation.virtualbox.guest.enable = true;
@@ -18,19 +19,19 @@ in
       WLR_RENDERER_ALLOW_SOFTWARE = 1;
     };
 
-    services.xserver.videoDrivers = [ "vmware" ];
+    services.xserver.videoDrivers = [ "virtualbox" ];
 
     users.users."${user}" = {
       extraGroups = [ "vboxsf" ];
     };
 
     systemd.tmpfiles.rules = [
-      "d /home/test/.dotfiles 0755 $USER users -"
-      "d /home/test/nixos 0755 $USER users -"
+      "d /home/test/.dotfiles 0755 ${user} users -"
+      "d /home/test/nixos 0755 ${user} users -"
     ];
 
     fileSystems."/home/test/nixos" = {
-      device = "nixos";
+      device = "nixos-share";
       fsType = "vboxsf";
       options = [
         "rw"
@@ -45,7 +46,7 @@ in
     };
 
     fileSystems."/home/test/.dotfiles" = {
-      device = "dotfiles";
+      device = "dotfiles-share";
       fsType = "vboxsf";
       options = [
         "rw"
