@@ -77,6 +77,8 @@ in
     videoDrivers = [ "amdgpu" "modesetting" ];
   };
 
+  # zsa keyboard stuff
+  users.groups.plugdev = {};
   services.udev.packages = [
     (pkgs.writeTextFile {
       name = "zsa_voyager";
