@@ -2,7 +2,8 @@
   description = "Nix flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.05";
+        #nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     matugen.url = "github:/InioX/Matugen";
   };
 
