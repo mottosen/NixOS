@@ -125,13 +125,8 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu
       };
     };
   };
-  programs = {
-    firefox.enable = true;
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
-  };
+
+  programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [
     # cli
