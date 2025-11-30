@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   options = {
@@ -60,12 +60,12 @@
       spawnEditor = lib.mkOption {
         description = "Command to spawn the right editor.";
         type = lib.types.nonEmptyStr;
-        default =
-          if ((config.systemSettings.editor == "vim") ||
-              (config.systemSettings.editor == "nvim")) then
-                "exec " + config.systemSettings.term + " -e " + config.systemSettings.editor
-          else
-            config.systemSettings.editor;
+        default = if ((config.systemSettings.editor == "vim")
+          || (config.systemSettings.editor == "nvim")) then
+          "exec " + config.systemSettings.term + " -e "
+          + config.systemSettings.editor
+        else
+          config.systemSettings.editor;
       };
 
       shell = lib.mkOption {

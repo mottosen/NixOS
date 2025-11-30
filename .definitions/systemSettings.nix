@@ -1,4 +1,4 @@
-{ config, lib, profile, system, ... }:
+{ lib, ... }:
 
 {
   options = {

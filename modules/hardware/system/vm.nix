@@ -1,13 +1,12 @@
 { config, lib, ... }:
 
-let
-  user = config.userSettings.username;
-in
-{
+let user = config.userSettings.username;
+in {
   config = lib.mkIf (config.systemSettings.profile == "vm") {
     boot = {
       initrd = {
-        availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
+        availableKernelModules =
+          [ "ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
       };
       loader.efi.canTouchEfiVariables = lib.mkForce false;
     };
@@ -21,9 +20,7 @@ in
 
     services.xserver.videoDrivers = [ "virtualbox" ];
 
-    users.users."${user}" = {
-      extraGroups = [ "vboxsf" ];
-    };
+    users.users."${user}" = { extraGroups = [ "vboxsf" ]; };
 
     systemd.tmpfiles.rules = [
       "d /home/test/.dotfiles 0755 ${user} users -"

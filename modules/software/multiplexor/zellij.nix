@@ -2,8 +2,6 @@
 
 {
   config = lib.mkIf (config.userSettings.multiplexor == "zellij") {
-    environment.systemPackages = with pkgs; [
-      zellij
-    ];
+    environment.systemPackages = with pkgs; [ zellij ];
   };
 }

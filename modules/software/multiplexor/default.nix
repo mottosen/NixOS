@@ -1,7 +1,5 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./zellij.nix
-  ];
+  imports = [ ./zellij.nix ];
 }

@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./zen.nix
-    ./librewolf.nix
-  ];
+  imports = [ ./zen.nix ./librewolf.nix ];
 }

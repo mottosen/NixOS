@@ -1,10 +1,5 @@
-{ config, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./vm.nix
-    ./framework.nix
-    ./viking.nix
-    ./dell.nix
-  ];
+  imports = [ ./vm.nix ./framework.nix ./viking.nix ./dell.nix ];
 }

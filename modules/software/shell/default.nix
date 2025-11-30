@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./bash.nix
-    ./zsh.nix
-  ];
+  imports = [ ./bash.nix ./zsh.nix ];
 }

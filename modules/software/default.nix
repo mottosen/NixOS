@@ -1,11 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
-let
-  user = config.userSettings.username;
-in
-{
+let user = config.userSettings.username;
+in {
   imports = [
-     ../../profiles
+    ../../profiles
     ./editor
     ./multiplexor
     ./shell
@@ -48,9 +46,9 @@ in
       enable = true;
       wifi.backend = "wpa_supplicant";
     };
-#     extraHosts = ''
-# 127.0.0.1 local.appstract.cloud
-#     '';
+    #     extraHosts = ''
+    # 127.0.0.1 local.appstract.cloud
+    #     '';
   };
 
   # Baseline terminal
@@ -58,8 +56,8 @@ in
   environment = {
     shells = with pkgs; [ bash zsh ];
     sessionVariables = {
-      EDITOR   = config.userSettings.editor;
-      VISUAL   = config.userSettings.editor;
+      EDITOR = config.userSettings.editor;
+      VISUAL = config.userSettings.editor;
       TERMINAL = config.userSettings.terminal;
     };
   };
@@ -83,18 +81,18 @@ in
   };
 
   # zsa keyboard stuff
-  users.groups.plugdev = {};
+  users.groups.plugdev = { };
   services.udev.packages = [
     (pkgs.writeTextFile {
       name = "zsa_voyager";
       destination = "/etc/udev/rules.d/50-zsa.rules";
       text = ''
-# Rules for Oryx web flashing and live training
-KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
-KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+        # Rules for Oryx web flashing and live training
+        KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+        KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
 
-# Keymapp Flashing rules for the Voyager
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
+        # Keymapp Flashing rules for the Voyager
+        SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
       '';
     })
   ];
@@ -102,23 +100,30 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu
   # User Setup
   users.users."${user}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "input" "video" "seat" "plugdev" "libvirtd" "docker" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "input"
+      "video"
+      "seat"
+      "plugdev"
+      "libvirtd"
+      "docker"
+    ];
     initialPassword = "1234";
   };
 
   # System wide packages
   nixpkgs.config.allowUnfree = true;
   virtualisation.docker = {
-        enable = true;
-        #extraOptions = "--bip=192.168.100.1/24 --fixed-cidr=192.168.100.0/24 --dns=8.8.8.8 --dns=8.8.4.4";
+    enable = true;
+    #extraOptions = "--bip=192.168.100.1/24 --fixed-cidr=192.168.100.0/24 --dns=8.8.8.8 --dns=8.8.4.4";
   };
   services = {
     displayManager.gdm.enable = true;
     blueman.enable = true;
     pcscd.enable = true;
-    logind = {
-      settings.Login.HandleLidSwitchDocked = "suspend";
-    };
+    logind = { settings.Login.HandleLidSwitchDocked = "suspend"; };
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -184,10 +189,8 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu
     # vm stuff
     qemu
     quickemu
-    (
-      writeShellScriptBin "qemu-system-x86_64-uefi" ''
-        qemu-system-x86_64 -bios ${pkgs.OVMF.fd}/FV/OVMF.fd "$@"
-      ''
-    )
+    (writeShellScriptBin "qemu-system-x86_64-uefi" ''
+      qemu-system-x86_64 -bios ${pkgs.OVMF.fd}/FV/OVMF.fd "$@"
+    '')
   ];
 }

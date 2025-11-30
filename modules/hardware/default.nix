@@ -1,12 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ../../profiles
-    ./bootloader
-    ./system
-    ./kernel
-  ];
+  imports = [ ../../profiles ./bootloader ./system ./kernel ];
 
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   networking.useDHCP = lib.mkDefault true;
@@ -24,9 +19,7 @@
           Experimental = true;
           FastConnectable = true;
         };
-        Policy = {
-          AutoEnable = true;
-        };
+        Policy = { AutoEnable = true; };
       };
     };
   };
@@ -36,7 +29,8 @@
     fsType = "ext4";
   };
 
-  swapDevices = [
-    { device = "/swapfile"; size = 2048; }
-  ];
+  swapDevices = [{
+    device = "/swapfile";
+    size = 2048;
+  }];
 }

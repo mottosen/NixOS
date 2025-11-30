@@ -1,7 +1,5 @@
-{ config, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./specific-kernel.nix
-  ];
+  imports = [ ./specific-kernel.nix ];
 }

@@ -1,9 +1,7 @@
 { config, lib, ... }:
 
 {
-  imports = [
-    ../../.definitions
-  ];
+  imports = [ ../../.definitions ];
 
   config = lib.mkIf (config.systemSettings.profile == "dell") {
     systemSettings = {

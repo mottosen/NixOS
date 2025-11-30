@@ -1,9 +1,5 @@
-{ config, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./efi.nix
-    ./bios.nix
-    ./bios-libreboot.nix
-  ];
+  imports = [ ./efi.nix ./bios.nix ./bios-libreboot.nix ];
 }

@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./nvim.nix
-    ./vscode.nix
-  ];
+  imports = [ ./nvim.nix ./vscode.nix ];
 }

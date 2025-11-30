@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./wezterm.nix
-    ./kitty.nix
-  ];
+  imports = [ ./wezterm.nix ./kitty.nix ];
 }
