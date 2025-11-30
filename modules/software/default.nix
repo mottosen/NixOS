@@ -21,6 +21,9 @@ in
     download-buffer-size = 134217728; # 128 MB (default is 64 MB)
   };
 
+  # Enable nix-ld to run dynamically linked executables (needed for Mason LSP servers)
+  programs.nix-ld.enable = true;
+
   # VMs
   programs.virt-manager.enable = true;
   virtualisation = {
