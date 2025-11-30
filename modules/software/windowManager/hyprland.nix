@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, system, ... }:
 
 {
   config = lib.mkIf (config.userSettings.windowManager == "hypr") {
