@@ -140,9 +140,11 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu
     stow
     uair # pomodoro timer cli
     wget # full install needed for TLS support
+    cargo # rust package manager, used for Mason
 
     # tui
     btop
+    claude-code
     lazydocker
     ranger
     vim
@@ -174,6 +176,7 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu
     gcc
     lua
     python3
+    nodejs
 
     # vm stuff
     qemu
