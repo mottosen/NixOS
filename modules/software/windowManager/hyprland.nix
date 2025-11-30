@@ -12,6 +12,8 @@
       hyprshot
       hyprcursor
 
+      wl-clipboard
+
       wofi
       pcmanfm
 
@@ -21,7 +23,6 @@
     ];
 
     # Input/session management for Wayland compositors
-    #services.seatd.enable = true;                 # Hyprland can use seatd or logind
     security.polkit.enable = true;
 
     # Portals (screen sharing, open dialog etc.)
