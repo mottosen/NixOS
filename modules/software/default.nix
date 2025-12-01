@@ -145,6 +145,7 @@ in {
     fzf
     gnumake
     ripgrep
+    sshfs
     stow
     uair # pomodoro timer cli
     wget # full install needed for TLS support
@@ -158,10 +159,10 @@ in {
     vim
 
     # gui
-    feh # image viewer
     geteduroam
     keymapp # zsa keyboard tool
     obsidian
+    oculante # image viewer
     vscode
     yubioath-flutter
     zotero
