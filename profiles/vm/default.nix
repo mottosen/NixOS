@@ -14,7 +14,6 @@
     userSettings = {
       username = "test"; # host mounted dir depends on this
       name = "test user";
-      email = "test@vm.com";
       windowManager = "qtile";
       browser = "librewolf";
       terminal = "kitty";

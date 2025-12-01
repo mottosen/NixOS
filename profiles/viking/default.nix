@@ -14,7 +14,6 @@
     userSettings = {
       username = "marius";
       name = "marius";
-      email = "marius@test.com";
       windowManager = "qtile";
       browser = "librewolf";
       terminal = "kitty";
