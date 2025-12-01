@@ -30,10 +30,13 @@ in {
   };
 
   # Garbage Collection
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
+  nix = {
+    optimise.automatic = true;
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+    };
   };
 
   # Location and Network
@@ -59,6 +62,8 @@ in {
       EDITOR = config.userSettings.editor;
       VISUAL = config.userSettings.editor;
       TERMINAL = config.userSettings.terminal;
+      GTK_THEME = "Adwaita:dark";
+      QT_STYLE_OVERRIDE = "Adwaita-Dark";
     };
   };
 
@@ -135,6 +140,13 @@ in {
   };
 
   programs.firefox.enable = true;
+  programs.dconf.enable = true;
+
+  # GTK dark theme configuration
+  environment.etc."xdg/gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-application-prefer-dark-theme=1
+  '';
 
   environment.systemPackages = with pkgs; [
     # cli
