@@ -20,7 +20,10 @@ in {
   };
 
   # Enable nix-ld to run dynamically linked executables (needed for Mason LSP servers)
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [ dotnet-sdk_9 ];
+  };
 
   # VMs
   programs.virt-manager.enable = true;
@@ -64,6 +67,8 @@ in {
       TERMINAL = config.userSettings.terminal;
       GTK_THEME = "Adwaita:dark";
       QT_STYLE_OVERRIDE = "Adwaita-Dark";
+      # Make dotnet available to Mason-installed tools
+      DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
     };
   };
 
@@ -198,6 +203,7 @@ in {
     lua
     python3
     nodejs
+    dotnet-sdk_9
 
     # vm stuff
     qemu
