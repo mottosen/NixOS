@@ -164,8 +164,8 @@ in {
     ripgrep
     sshfs
     stow
-    uair # pomodoro timer cli
-    wget # full install needed for TLS support
+    uair
+    wget # busybox install not enough
     cargo # rust package manager, used for Mason
 
     # tui
@@ -177,7 +177,7 @@ in {
 
     # gui
     geteduroam
-    keymapp # zsa keyboard tool
+    keymapp
     obsidian
     oculante # image viewer
     vscode
@@ -185,15 +185,15 @@ in {
     zotero
 
     # utility
-    brightnessctl # screeb brightness
+    brightnessctl
     bibata-cursors
-    libnotify # notification utility
-    libinput # input devices
-    mako # notification service
-    pik # kill processes
+    libnotify
+    libinput
+    mako
+    pik
 
     # git
-    diff-so-fancy # pretty print file diff
+    diff-so-fancy
     git
     lazygit
 
