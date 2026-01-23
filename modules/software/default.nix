@@ -52,9 +52,10 @@ in {
       enable = true;
       wifi.backend = "wpa_supplicant";
     };
-    #     extraHosts = ''
-    # 127.0.0.1 local.appstract.cloud
-    #     '';
+    extraHosts = ''
+      127.0.0.2 local.appstract.cloud
+      127.0.0.1 thephyllosopher.com
+    '';
   };
 
   # Baseline terminal
@@ -69,6 +70,11 @@ in {
       QT_STYLE_OVERRIDE = "Adwaita-Dark";
       # Make dotnet available to Mason-installed tools
       DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
+      # Set timezone for applications (helps with Electron apps like Discord)
+      TZ = config.systemSettings.timezone;
+      # Additional dark theme preferences
+      GTK_THEME_VARIANT = "dark";
+      QT_QPA_PLATFORMTHEME = "gtk3";
     };
   };
 
@@ -144,11 +150,26 @@ in {
     };
   };
 
-  programs.firefox.enable = true;
-  programs.dconf.enable = true;
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [{
+      settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          gtk-theme = "Adwaita-dark";
+        };
+      };
+    }];
+  };
 
   # GTK dark theme configuration
   environment.etc."xdg/gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-application-prefer-dark-theme=1
+  '';
+
+  # GTK 4 dark theme configuration
+  environment.etc."xdg/gtk-4.0/settings.ini".text = ''
     [Settings]
     gtk-application-prefer-dark-theme=1
   '';
@@ -161,6 +182,7 @@ in {
     fastfetch
     fzf
     gnumake
+    nvme-cli
     ripgrep
     sshfs
     stow
@@ -171,11 +193,13 @@ in {
     # tui
     btop
     claude-code
+    github-copilot-cli
     lazydocker
     ranger
     vim
 
     # gui
+    firefox
     geteduroam
     keymapp
     obsidian
