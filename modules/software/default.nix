@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let user = config.userSettings.username;
 in {
@@ -47,7 +47,6 @@ in {
   i18n.defaultLocale = config.systemSettings.locale;
   networking = {
     hostName = config.systemSettings.hostname;
-    wireless.enable = false;
     networkmanager = {
       enable = true;
       wifi.backend = "wpa_supplicant";

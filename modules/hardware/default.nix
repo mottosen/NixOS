@@ -4,6 +4,7 @@
   imports = [ ../../profiles ./bootloader ./system ./kernel ];
 
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+  boot.tmp.useTmpfs = true;
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault config.systemSettings.architecture;
   security.rtkit.enable = true; # realtime scheduler, used by Pipewire
