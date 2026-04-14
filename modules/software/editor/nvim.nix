@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   config = {
@@ -9,6 +9,13 @@
       };
     };
 
-    environment.systemPackages = [ ];
+    environment.systemPackages = with pkgs; [
+      # --- LSP ---
+      asm-lsp
+
+      # --- Format ---
+      black
+      clang-tools
+    ];
   };
 }

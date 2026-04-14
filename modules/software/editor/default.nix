@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./nvim.nix ./vscode.nix ];
+  imports = [ ./nvim.nix ];
 }

@@ -181,6 +181,7 @@ in {
     fastfetch
     fzf
     gnumake
+    gdb
     nvme-cli
     ripgrep
     sshfs
@@ -202,7 +203,7 @@ in {
     geteduroam
     keymapp
     obsidian
-    oculante # image viewer
+    feh # image viewer
     vscode
     yubioath-flutter
     zotero
@@ -222,9 +223,11 @@ in {
 
     # languages
     cmake
+    clang
     gcc
     lua
     python3
+    go
     nodejs
     dotnet-sdk_9
 
