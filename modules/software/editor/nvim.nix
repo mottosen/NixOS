@@ -17,6 +17,9 @@
       # --- Format ---
       black
       clang-tools
+
+      # --- Plugins ---
+      tree-sitter
     ];
   };
 }
