@@ -176,6 +176,7 @@ in {
   environment.systemPackages = with pkgs; [
     # cli
     busybox
+    cargo
     curl
     devbox
     fastfetch
@@ -183,12 +184,14 @@ in {
     gnumake
     gdb
     nvme-cli
+    proton-vpn-cli
+    radare2
     ripgrep
     sshfs
     stow
     uair
     wget # busybox install not enough
-    cargo # rust package manager, used for Mason
+    zip
 
     # tui
     btop
@@ -203,7 +206,7 @@ in {
     geteduroam
     keymapp
     obsidian
-    feh # image viewer
+    feh
     vscode
     yubioath-flutter
     zotero
