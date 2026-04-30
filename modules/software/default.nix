@@ -1,7 +1,14 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let user = config.userSettings.username;
-in {
+let
+  user = config.userSettings.username;
+in
+{
   imports = [
     ../../profiles
     ./editor
@@ -15,7 +22,10 @@ in {
   # General
   system.stateVersion = "25.05"; # Do not change
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     download-buffer-size = 134217728; # 128 MB (default is 64 MB)
   };
 
@@ -60,7 +70,10 @@ in {
   # Baseline terminal
   users.defaultUserShell = pkgs.bash;
   environment = {
-    shells = with pkgs; [ bash zsh ];
+    shells = with pkgs; [
+      bash
+      zsh
+    ];
     sessionVariables = {
       EDITOR = config.userSettings.editor;
       VISUAL = config.userSettings.editor;
@@ -92,7 +105,10 @@ in {
   services.xserver = {
     enable = true;
     windowManager.qtile.enable = true;
-    videoDrivers = [ "amdgpu" "modesetting" ];
+    videoDrivers = [
+      "amdgpu"
+      "modesetting"
+    ];
   };
 
   # zsa keyboard stuff
@@ -138,7 +154,9 @@ in {
     displayManager.gdm.enable = true;
     blueman.enable = true;
     pcscd.enable = true;
-    logind = { settings.Login.HandleLidSwitchDocked = "suspend"; };
+    logind = {
+      settings.Login.HandleLidSwitchDocked = "suspend";
+    };
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -151,14 +169,16 @@ in {
 
   programs.dconf = {
     enable = true;
-    profiles.user.databases = [{
-      settings = {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-          gtk-theme = "Adwaita-dark";
+    profiles.user.databases = [
+      {
+        settings = {
+          "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+            gtk-theme = "Adwaita-dark";
+          };
         };
-      };
-    }];
+      }
+    ];
   };
 
   # GTK dark theme configuration
