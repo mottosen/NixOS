@@ -2,6 +2,8 @@
   config,
   pkgs,
   lib,
+  inputs,
+  system,
   ...
 }:
 
@@ -27,6 +29,8 @@ in
       "flakes"
     ];
     download-buffer-size = 134217728; # 128 MB (default is 64 MB)
+    keep-outputs = true;
+    keep-derivations = true;
   };
 
   # Enable nix-ld to run dynamically linked executables (needed for Mason LSP servers)
@@ -38,7 +42,10 @@ in
   # VMs
   programs.virt-manager.enable = true;
   virtualisation = {
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+    };
     spiceUSBRedirection.enable = true;
   };
 
@@ -211,7 +218,6 @@ in
     fastfetch
     fzf
     gnumake
-    gdb
     nvme-cli
     proton-vpn-cli
     radare2
@@ -225,10 +231,13 @@ in
     # tui
     btop
     claude-code
+    gdb
     github-copilot-cli
     lazydocker
+    inputs.pwndbg.packages.${system}.default
     ranger
     vim
+    bluetui
 
     # gui
     firefox
