@@ -144,6 +144,18 @@ in
     initialPassword = "1234";
   };
 
+  # GTK dark theme configuration
+  environment.etc."xdg/gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-application-prefer-dark-theme=1
+  '';
+
+  # GTK 4 dark theme configuration
+  environment.etc."xdg/gtk-4.0/settings.ini".text = ''
+    [Settings]
+    gtk-application-prefer-dark-theme=1
+  '';
+
   # System wide packages
   nixpkgs.config.allowUnfree = true;
   virtualisation.docker = {
@@ -181,17 +193,14 @@ in
     ];
   };
 
-  # GTK dark theme configuration
-  environment.etc."xdg/gtk-3.0/settings.ini".text = ''
-    [Settings]
-    gtk-application-prefer-dark-theme=1
-  '';
-
-  # GTK 4 dark theme configuration
-  environment.etc."xdg/gtk-4.0/settings.ini".text = ''
-    [Settings]
-    gtk-application-prefer-dark-theme=1
-  '';
+  programs.yazi = {
+    enable = true;
+    package = pkgs.yazi.override {
+      extraPackages = with pkgs; [
+        ueberzugpp
+      ];
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     # cli
