@@ -5,9 +5,10 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     matugen.url = "github:/InioX/Matugen";
+    pwndbg.url = "github:pwndbg/pwndbg";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, pwndbg, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
