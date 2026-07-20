@@ -3,8 +3,12 @@
 {
   imports = [ ../../profiles ./bootloader ./system ./kernel ];
 
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   boot.tmp.useTmpfs = true;
+  # mkfs/mount tooling + kernel modules; covers all fs in use plus xfs.
+  # xfs (new), ext4 (root /), vfat (EFI /boot), fuse (sshfs remote mounts)
+  boot.supportedFilesystems = [ "xfs" "ext4" "vfat" "fuse" ];
+  # setuid fusermount3 wrapper; required for non-root sshfs mounts
+  programs.fuse.enable = true;
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault config.systemSettings.architecture;
   security.rtkit.enable = true; # realtime scheduler, used by Pipewire
